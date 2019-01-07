@@ -4,21 +4,27 @@ import {createStore} from 'redux';
 import { Provider } from 'react-redux';
 import Contador from './components/Contador'
 
-function reducer() {
-    return {
-        count: 42
-    };
+const initialState = {
+    count: 0
+}
+
+function reducer(state = initialState, action) {
+    switch(action.type) {
+        case 'INCREMENT':
+            return {
+                count: state.count + 1
+            };
+        case 'DECREMENT':
+            return {
+                count: state.count - 1
+            };
+        default:
+            return state;
+    }
 }
 
 const store = createStore(reducer);
 
-// const  Route = () => (
-//     <Provider store={store}>
-//         <Contador />
-//     </Provider>
-// );
-
-//export default Route;
 export default class Route extends React.Component {
     render() {
         return (

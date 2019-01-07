@@ -16,16 +16,13 @@ class Contador extends React.Component {
     }
 
     increment = () => {
-        this.setState({
-            //fill in later
-        });
+        this.props.dispatch({ type: 'INCREMENT'});
     }
 
     decrement = () => {
-        this.setState({
-            //fill in later
-        });
+        this.props.dispatch({ type: 'DECREMENT'});
     }
+
     render() {
         return (
             <View style={styles.container}>
