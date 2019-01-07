@@ -5,8 +5,9 @@ import {
     View,
     TouchableHighlight
 } from 'react-native';
+import { connect } from 'react-redux';
 
-export default class Contador extends React.Component {
+class Contador extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -16,13 +17,13 @@ export default class Contador extends React.Component {
 
     increment = () => {
         this.setState({
-            count: this.state.count + 1
+            //fill in later
         });
     }
 
     decrement = () => {
         this.setState({
-            count: this.state.count - 1
+            //fill in later
         });
     }
     render() {
@@ -53,7 +54,7 @@ export default class Contador extends React.Component {
                             </Text>
                     </TouchableHighlight>
 
-                    <Text style={styles.txtCount}>{`${this.state.count}`}</Text>
+                    <Text style={styles.txtCount}>{`${this.props.count}`}</Text>
 
                     <TouchableHighlight
                             underlayColor={'#012e8f'}
@@ -82,6 +83,12 @@ export default class Contador extends React.Component {
         );
     }
 }
+function mapStateToProps(state) {
+    return {
+        count: state.count
+    };
+}
+export default connect(mapStateToProps)(Contador);
 
 const styles = StyleSheet.create({
     container: {
